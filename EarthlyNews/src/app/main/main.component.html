@@ -1,0 +1,15 @@
+<div class="articles-container">
+    <h1>Latest News Articles</h1>
+    
+    <div ngIf="hasArticles" class="articles-list">
+      <div *ngFor="let article of articles" class="article">
+        <h2> {{ article.title }} </h2>
+        <p> {{ article.content }} </p>
+        <small>By {{ article.author }}</small>
+      </div>
+    </div>
+    <div ngIf="!hasArticles">
+        <p>No articles available at the moment.</p>
+    </div>
+  </div>
+  

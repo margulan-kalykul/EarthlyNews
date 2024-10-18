@@ -1,0 +1,11 @@
+<div>
+    <input [(ngModel)]="login" placeholder="login" />
+    <input [(ngModel)]="password" placeholder="password" />
+    
+    <div *ngIf="!isAuthorized">
+      <button (click)="doSignUp()">Sign Up</button>
+    </div>
+    <div *ngIf="isAuthorized">
+        <button (click)="doLogOut()">Log Out</button>
+    </div>
+</div>
