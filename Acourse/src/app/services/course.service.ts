@@ -13,7 +13,7 @@ export class CourseService {
 
   constructor(private http: HttpClient) { }
 
-  BASE_URL = 'https://acourse.free.beeceptor.com';
+  BASE_URL = 'https://d5a1b872-690b-4e46-bb64-d63b244db87d.mock.pstmn.io';
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -42,8 +42,20 @@ export class CourseService {
     return this.http.put(`${this.BASE_URL}/api/courses/${course.short_name}/`, course, this.httpOptions);
   }
 
+  deleteCourse(course: COURSE): Observable<any> {
+    return this.http.delete(`${this.BASE_URL}/api/courses/${course.short_name}/`);
+  }
+
   addLink(link: LINK): Observable<LINK> {
     return this.http.post<LINK>(`${this.BASE_URL}/api/links/`, link, this.httpOptions);
+  }
+
+  updateLink(link: LINK): Observable<any> {
+    return this.http.put(`${this.BASE_URL}/api/links/${link.name}/`, link, this.httpOptions);
+  }
+
+  deleteLink(link: LINK): Observable<any> {
+    return this.http.delete(`${this.BASE_URL}/api/links/${link.name}/`);
   }
 
   addFile(file: FILE): Observable<FILE> {
@@ -55,6 +67,14 @@ export class CourseService {
   }
 
   addNote(note: NOTE): Observable<NOTE> {
-    return this.http.post<NOTE>(`${this.BASE_URL}/api/notes/`, note, this.httpOptions);
+      return this.http.post<NOTE>(`${this.BASE_URL}/api/notes/`, note, this.httpOptions);
+    }
+
+  updateNote(note: NOTE): Observable<any> {
+    return this.http.put(`${this.BASE_URL}/api/notes/${note.note}/`, note, this.httpOptions);
+  }
+
+  deleteNote(note:NOTE): Observable<any> {
+    return this.http.delete(`${this.BASE_URL}/api/notes/${note.note}/`);
   }
 }

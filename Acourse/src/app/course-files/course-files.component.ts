@@ -6,12 +6,13 @@ import { NOTE } from '../database/note';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { LoginService } from '../services/login.service';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-course-files',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './course-files.component.html',
   styleUrl: './course-files.component.css'
 })
@@ -22,7 +23,7 @@ export class CourseFilesComponent implements OnInit{
   notes!: NOTE[];
   note!: string;
 
-  constructor(private route: ActivatedRoute, private courseService: CourseService, private location: Location, private loginService: LoginService) { }
+  constructor(private route: ActivatedRoute, private courseService: CourseService, private location: Location, public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.getCourse();

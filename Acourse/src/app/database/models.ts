@@ -19,5 +19,5 @@ export interface Note {
 }
 
 export class LoginResponse {
-  token: string;
+  token: string | null = null;
 }

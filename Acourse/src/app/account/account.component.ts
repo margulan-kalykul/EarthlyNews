@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { LINK } from '../database/links';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './account.component.html',
   styleUrl: './account.component.css'
 })
@@ -24,7 +25,10 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCourses();
-    const token = localStorage.getItem('token');
+    var token;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      token = localStorage.getItem('token');
+    }
     if (token) {
       this.username = this.loginService.getUsername();
     }
@@ -79,9 +83,13 @@ export class AccountComponent implements OnInit {
     const request: FILE = {name, course, file: this.file!};
 
     // Make a service
-    this.http.post('https://app.beeceptor.com/api/files/', request).subscribe(res => {console.log(res); });
+    this.http.post('https://d5a1b872-690b-4e46-bb64-d63b244db87d.mock.pstmn.io/api/files/', request).subscribe(res => {console.log(res); });
     this.courseService.addFile(request).subscribe(() => alert('file added'));
     console.log(this.file);
+  }
+
+  updateCourse(event: Event): void {
+    
   }
 
   logout() {
