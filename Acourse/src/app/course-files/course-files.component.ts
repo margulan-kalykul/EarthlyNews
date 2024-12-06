@@ -22,14 +22,21 @@ export class CourseFilesComponent implements OnInit{
   links!: LINK[];
   notes!: NOTE[];
   note!: string;
+  isLogged: boolean = false;
 
   constructor(private route: ActivatedRoute, private courseService: CourseService, private location: Location, public loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.isLogged = this.loginService.logged;
     this.getCourse();
     this.getFiles();
     this.getLinks();
     this.getNotes();
+  }
+
+  deleteCourse(): void {
+    const name = this.route.snapshot.paramMap.get('name');
+    this.courseService.deleteCourse(name!);
   }
 
   getFiles(): void {

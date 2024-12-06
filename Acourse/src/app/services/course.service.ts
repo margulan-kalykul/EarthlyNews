@@ -42,8 +42,8 @@ export class CourseService {
     return this.http.put(`${this.BASE_URL}/api/courses/${course.short_name}/`, course, this.httpOptions);
   }
 
-  deleteCourse(course: COURSE): Observable<any> {
-    return this.http.delete(`${this.BASE_URL}/api/courses/${course.short_name}/`);
+  deleteCourse(course: string): Observable<any> {
+    return this.http.delete(`${this.BASE_URL}/api/courses/${course}/`);
   }
 
   addLink(link: LINK): Observable<LINK> {
@@ -54,8 +54,8 @@ export class CourseService {
     return this.http.put(`${this.BASE_URL}/api/links/${link.name}/`, link, this.httpOptions);
   }
 
-  deleteLink(link: LINK): Observable<any> {
-    return this.http.delete(`${this.BASE_URL}/api/links/${link.name}/`);
+  deleteLink(link: string): Observable<any> {
+    return this.http.delete(`${this.BASE_URL}/api/links/${link}/`);
   }
 
   addFile(file: FILE): Observable<FILE> {
@@ -74,7 +74,7 @@ export class CourseService {
     return this.http.put(`${this.BASE_URL}/api/notes/${note.note}/`, note, this.httpOptions);
   }
 
-  deleteNote(note:NOTE): Observable<any> {
-    return this.http.delete(`${this.BASE_URL}/api/notes/${note.note}/`);
+  deleteNote(note: string): Observable<any> {
+    return this.http.delete(`${this.BASE_URL}/api/notes/${note}/`);
   }
 }

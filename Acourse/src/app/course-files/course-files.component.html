@@ -50,7 +50,7 @@
   </div>
   
   
-  <div class="notes" *ngIf="loginService.logged">
+  <div class="notes" *ngIf="isLogged">
     <label> Add a comment: <br>
       <textarea [(ngModel)]="note" id="notes" name="notes" placeholder=" Type your notes" type="text"></textarea>
     </label>
@@ -72,7 +72,7 @@
     </div>
   </div>
   
-  
+  <button (click)="deleteCourse()">Delete</button>
   
   
   <button (click)="goBack()">Go back</button>
